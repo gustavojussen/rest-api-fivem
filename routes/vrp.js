@@ -1,9 +1,13 @@
 const { lua } = require('./lua');
 
-const vrp = {};
+const vRP = {};
 
-vrp.isOnline = (id) => {
-    return lua(`vRP.getUserSource(${id}) ~= nil`);
+vRP.checkPlayerOnline = (id) => {
+    if (id) {
+        const check = lua(`vRP.getUserSource(${id}) ~= nil`)
+        return check;
+    }
 }
 
-module.exports = vrp;
+
+module.exports = vRP;

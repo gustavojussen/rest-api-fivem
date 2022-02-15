@@ -2,13 +2,14 @@ const express = require('express');
 const app = express()
 
 const morgan = require('morgan')
-const routerBeta = require('./routes/beta')
+const Routes = require('./routes/api')
+
 app.use(morgan('dev'))
 
 
-app.use('/beta',routerBeta)
+app.use('/api',Routes)
 
-// Nao encontrando o arquivo ROUTES
+
 app.use((req,res,next) => {
     const erro = new Error('Nao encontrado')
     erro.status = 404
